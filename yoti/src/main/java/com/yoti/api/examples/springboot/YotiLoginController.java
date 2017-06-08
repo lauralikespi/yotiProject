@@ -29,7 +29,21 @@ public class YotiLoginController {
      * This endpoint is the "Callback URL" which will be called by user's browser after user logs in. It's a GET endpoint.
      * We will pass you a token inside url query string (/login?token=token-value)
      */
-    @RequestMapping("/login")
+    
+    @RequestMapping("/basket")
+    public String basket() {
+        return "basket";
+    }
+
+    @RequestMapping("/checkout")
+    public String checkout() {
+        return "checkout";
+    }
+/**  @RequestMapping("/profile")
+   * public String profile() {
+    *    return "profile";
+    }
+*/    @RequestMapping("/profile")
     public String doLogin(@RequestParam("token") final String token, final Model model) {
         ActivityDetails activityDetails;
         HumanProfile profile;
@@ -46,7 +60,7 @@ public class YotiLoginController {
         model.addAttribute("phone", profile.getPhoneNumber());
         model.addAttribute("userId", activityDetails.getUserId());
 
-        return "home";
+        return "profile";
     }
 
 }

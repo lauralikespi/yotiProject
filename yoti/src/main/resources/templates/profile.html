@@ -1,0 +1,128 @@
+<!Doctype html5>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title> Innovation Movie Store </title>
+		<script src="https://use.fontawesome.com/b4ff8074fd.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css"/>
+
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+		<script src="css/bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/movieNames.js"></script>
+		<script src="js/htmlTemplates.js"></script>
+		<script src="js/basket.js"></script>
+
+		<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://sdk.yoti.com/clients/browser.js"></script>
+		<link rel="shortcut icon" href="css/img/favicon.ico"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+	</head>
+	<body>
+		<div class="container">
+				<div class="row" id="titleBar">
+					<br/>
+					<div class="col-sm-6">
+						<svg viewBox="0 0 350 50">
+  							<a href="/"><text y="40"> Innovation Movie Store </text></a>
+						</svg>
+					</div>
+					<div class="col-sm-4">
+					</div>
+					<div class="col-sm-2" id="worldpayTitle">
+						<h4 id="tagText"> brought to you by </h4>
+						<img src="css/img/worldpayLogo.jpg" width="80%"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+					</div>
+					<div class="col-sm-8"> 
+					</div>
+				</div>
+				<div class="col-sm-1">
+				</div>
+					<div class="col-sm-4 shoppingBasketPage">
+							<h3 id="successful"> Success </h3>
+							<p id="successful"> Thank you, your age verification has passed. Please continue to checkout. </p>
+							<a class="btn button btn-primary" id="checkout" href="/checkout"> Checkout </a>
+							<br/>
+							<p id="underage"> Unfortunately, you are not old enough to watch some of the movies in your basket. </p>
+						<br/>
+					</div>
+					<div class="col-sm-6">
+						<div class="row">
+							<div class="col-sm-1">
+							</div>
+							<div class="col-sm-8 shoppingBasketPage">
+								<div class="row">
+									<h3> Shopping Basket </h3>
+								</div>
+								<div id="basket" class="row">
+								</div>
+								<div class="row" id="total">
+									<div class="col-sm-9" align="right">
+										<strong> Total price: </strong>
+									</div>
+									<div class="col-sm-2" id="price">
+									</div>
+								</div>
+								<br/>
+
+								<br/>
+							</div>
+							<div class="col-sm-1">
+							</div>
+					</div>
+				</div>
+		</div>
+   			<script>
+   				RewriteFromStorage();
+   				var dateReq = new Date();
+   				var dd = dateReq.getDate();
+				var mm = dateReq.getMonth()+1; //January is 0
+				var yyyy = dateReq.getFullYear() - sessionStorage.maxAge;
+
+				if(dd<10) {
+					dd='0'+dd
+				} 
+
+				if(mm<10) {
+					mm='0'+mm
+				}
+			/*	For testing age too young:
+				var dd = 01;
+				var mm = 12;
+				var yyyy = 1901;
+				
+			*/	
+				dateReq = yyyy+'-'+mm+'-'+dd;
+   				var userData = JSON.parse('<%- JSON.stringify(profile) %>');
+   				console.log(userData);
+   				var DOB = userData.dateOfBirth;
+   				console.log(DOB);
+   				console.log(dateReq);
+				console.log(DOB <= dateReq);
+				
+				if (DOB <= dateReq){
+			    	$('.itemsNumber').text(sessionStorage.length -1);
+			    	$('#checkout').show();
+			    	$('#successful').show();
+			    	$('#yoti').hide();
+			    	$('#underage').hide();
+			    }
+			    else {
+			    	$('.itemsNumber').text(sessionStorage.length -1);
+			    	$('#underage').show();
+			    	$('#successful').hide();
+			    	$('#yoti').hide();
+			    	$('#checkout').hide();
+			    	
+			   	}
+			   
+   			</script>
+		<script>
+			_ybg.config.service = 'https://www.yoti.com/connect/'
+			_ybg.init()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,14 @@
+spring:
+    thymeleaf:
+        cache: false
+server:
+    port: 8080
+    ssl:
+        enabled: true
+        key-store: "server.keystore.jks"
+        key-store-password: javaexample
+com:
+    yoti:
+        client:
+            clientSdkId: "yoti-client-sdk-id-from-dashboard"
+            accessSecurityKey: "classpath:/app-keypair.pem"

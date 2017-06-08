@@ -1,0 +1,133 @@
+body {
+	font-family: 'Adelle', sans-serif;
+	min-height: 110%;
+	width: 100%;
+/*	background-image: url(img/theater.jpg);*/
+}
+.container {
+	min-height: 100%;
+	/*border-radius: 10px; */
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+#headingPhoto {
+	height: 100%;
+	background-image: url(img/cinema.jpg);
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+}
+#titleBar {
+	padding: 5px;
+	height: 20%;
+	color: white;
+}
+svg {
+  font-weight: bold;
+  font-size: 36px;
+  height: 50px;
+  width: 60%;
+}
+text{
+  fill: #b41437;
+  stroke: #919191;
+  stroke-width:1px;
+  // stroke-dasharray: 1,1;
+  stroke-linejoin: round;
+}
+#worldpayTitle {
+	align-content: right;
+	padding-right: 2px;
+}
+#arrowAnchor {
+	font-size: 100px;
+	position: absolute;
+	bottom: 0;
+}
+#arrowAnchor > a {
+	color: #919191;
+	right: 50%;
+}
+#movieContainer {
+	height: 200%;
+	background-color: #393939;
+	position: relative;
+}
+#movieContainer h2 {
+	padding-left: 5px;
+	color: #b41437;	
+}
+.genreMovies {
+	width: 100%;
+	height: 200px;
+	/*border-radius: 5px;*/
+}
+#moviePictures {
+	margin: 5px;
+}
+#movie1Img, 
+#movie2Img,
+#movie3Img,
+#movie4Img,
+#movie5Img,
+#movie6Img,
+#movie7Img,
+#movie8Img,
+#movie9Img {
+	width: 100%;
+	height: 200px;
+}
+/*
+#movie1Img, #movie2Img, #movie3Img, #movie4Img, #movie5Img, #movie6Img, #movie7Img, #movie8Img, #movie9Img{
+   -webkit-filter: brightness(50%);
+   filter: brightness(50%);
+ }
+ */
+ #movie1Img:hover, #movie2Img:hover, #movie3Img:hover, #movie4Img:hover, #movie5Img:hover, #movie6Img:hover, #movie7Img:hover, #movie8Img:hover, #movie9Img:hover{
+   -webkit-filter: brightness(70%);
+   filter: brightness(70%);
+}
+#popUpDiv1, #popUpDiv2, #popUpDiv3, #popUpDiv4, #popUpDiv5, #popUpDiv6, #popUpDiv7, #popUpDiv8, #popUpDiv9 {
+	height: 200px;
+	background-color: grey;
+	padding: 5px;
+}
+.movieGenre {
+	background-color: #393939;
+	color: #b41437;
+	height: 200px;
+/*	border-left: white solid 14px;
+	border-right: white solid 14px;
+*/
+	text-align: center;
+}
+#shoppingBasket > a {
+	color: #919191;
+}
+.fa-shopping-basket {
+	text-align: right;
+}
+.shoppingBasketPage {
+	background-color: grey;
+	border: solid 2px #393939;
+}
+.shoppingBasketPage h3 {
+	color: #b41437;
+	padding: 5px;
+}
+.basketItems {
+	padding: 5px;
+	font-size: 18px;
+}
+.basketItems button {
+	margin-left: 10px;
+	padding: 5px;
+	font-size: 18px;
+}
+#total {
+	padding: 5px;
+	font-size: 18px;
+	font-weight: bolder;
+	background-color: #DCDCDC;
+}

@@ -10,5 +10,5 @@ server:
 com:
     yoti:
         client:
-            clientSdkId: "9b54809d-523f-4f87-befe-020af7d6896d"
+            clientSdkId: "f4b250fe-124a-4bcc-b0ff-6394ee658248"
             accessSecurityKey: "classpath:/app-keypair.pem"

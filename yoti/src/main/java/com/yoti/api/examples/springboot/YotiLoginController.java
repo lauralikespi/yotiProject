@@ -57,10 +57,11 @@ public class YotiLoginController {
 
         // load profile data into model
         model.addAttribute("name", profile.getGivenNames());
-        model.addAttribute("phone", profile.getPhoneNumber());
-        model.addAttribute("userId", activityDetails.getUserId());
+        model.addAttribute("dob", profile.getDateOfBirth());
+        model.addAttribute("email", profile.getEmailAddress());
+        //model.addAttribute("userId", activityDetails.getUserId());
 
-        return "profile";
+        return "laura";
     }
 
 }

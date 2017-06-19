@@ -12,6 +12,9 @@ import com.yoti.api.client.ActivityDetails;
 import com.yoti.api.client.HumanProfile;
 import com.yoti.api.client.ProfileException;
 import com.yoti.api.client.YotiClient;
+import com.yoti.api.client.Date;
+
+import com.worldpay.sdk.WorldpayRestClient;
 
 @Controller
 public class YotiLoginController {
@@ -29,7 +32,7 @@ public class YotiLoginController {
      * This endpoint is the "Callback URL" which will be called by user's browser after user logs in. It's a GET endpoint.
      * We will pass you a token inside url query string (/login?token=token-value)
      */
-    
+
     @RequestMapping("/basket")
     public String basket() {
         return "basket";
@@ -39,11 +42,38 @@ public class YotiLoginController {
     public String checkout() {
         return "checkout";
     }
-/**  @RequestMapping("/profile")
-   * public String profile() {
-    *    return "profile";
+/*    @RequestMapping("/pay")
+    public String pay() {
+        WorldpayRestClient restClient = new WorldpayRestClient("T_S_77b08f82-b877-4989-b595-f2773ef1c831");
+ 
+        OrderRequest orderRequest = new OrderRequest();
+        orderRequest.setToken("your-order-token");
+        orderRequest.setAmount(500);
+        orderRequest.setCurrencyCode(CurrencyCode.GBP);
+        orderRequest.setName("test name");
+        orderRequest.setOrderDescription("Order description");
+        orderRequest.setCustomerOrderCode("Order code");
+         
+        Address address = new Address();
+        address.setAddress1("123 House Road");
+        address.setAddress2("A village");
+        address.setCity("London");
+        address.setCountryCode(CountryCode.GB);
+        address.setPostalCode("EC1 1AA");
+        orderRequest.setBillingAddress(address);
+         
+        try {
+            OrderResponse orderResponse = restClient.getOrderService().create(orderRequest);
+            System.out.println("Order code: " + orderResponse.getOrderCode());
+        } catch (WorldpayException e) {
+            System.out.println("Error code: " + e.getApiError().getCustomCode());
+            System.out.println("Error description: " + e.getApiError().getDescription());
+            System.out.println("Error message: " + e.getApiError().getMessage());
+        }
+        System.out.println("Done");
     }
-*/    @RequestMapping("/profile")
+*/
+    @RequestMapping("/profile")
     public String doLogin(@RequestParam("token") final String token, final Model model) {
         ActivityDetails activityDetails;
         HumanProfile profile;
@@ -55,13 +85,24 @@ public class YotiLoginController {
             return "error";
         }
 
+        Date dob = profile.getDateOfBirth();
+
+        String month;
+
+       /* if( dob.getMonth() < 10) {
+            month = "0" + dob.getMonth();
+        } else {
+            month = dob.getMonth().string();
+        }
+*/
         // load profile data into model
-        model.addAttribute("name", profile.getGivenNames());
-        model.addAttribute("dob", profile.getDateOfBirth());
-        model.addAttribute("email", profile.getEmailAddress());
+        model.addAttribute("day", dob.getDay());
+        model.addAttribute("month", dob.getMonth());
+        model.addAttribute("year", dob.getYear());
         //model.addAttribute("userId", activityDetails.getUserId());
 
-        return "laura";
+        return "profile";
     }
+
 
 }

@@ -57,6 +57,11 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+     <groupId>com.worldpay</groupId>
+     <artifactId>worldpay-lib-java</artifactId>
+     <version>0.1.11</version>
+  </dependency>
   </dependencies>
   <build>
     <plugins>
